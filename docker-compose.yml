@@ -2,14 +2,26 @@ version: "3.9"
 
 services:
   minecraft:
-    image: "marctv/minecraft-papermc-server:1.16"
-    container_name: "mcserver"
+    image: "mcserver1"
+    container_name: "jasonandmaggie"
     environment:
       MEMORYSIZE: "2G"
     volumes:
-      - "/home/yourdir/minecraft:/data:rw"
+      - "/Users/jasonwilson/Documents/Minecraft Servering/dockermc:/data:rw"
     ports:
       - "25565:25565"
+    # The following allow `docker attach minecraft` to work
+    stdin_open: true
+    tty: true
+  minecraft2:
+    image: "mcserver1"
+    container_name: "otherserver"
+    environment:
+      MEMORYSIZE: "1G"
+    volumes:
+      - "/Users/jasonwilson/Documents/Minecraft Servering/dockermc2:/data:rw"
+    ports:
+      - "25575:25575"
     # The following allow `docker attach minecraft` to work
     stdin_open: true
     tty: true
